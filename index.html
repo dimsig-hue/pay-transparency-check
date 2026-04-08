@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EU Pay Transparency Readiness Check | ScaleableWorks</title>
+<meta name="description" content="A short EU Pay Transparency readiness check for organisations to identify priority actions across job architecture, pay data, governance, and manager capability.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://your-domain.com/eu-pay-transparency-readiness-check/">
+
+<!-- Open Graph / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="EU Pay Transparency Readiness Check">
+<meta property="og:description" content="Answer 8 quick questions to see how ready your organisation is for the EU Pay Transparency Directive.">
+<meta property="og:url" content="https://your-domain.com/eu-pay-transparency-readiness-check/">
+<meta property="og:image" content="https://your-domain.com/eu-pay-transparency-readiness-check/og-preview.png">
+<meta property="og:image:alt" content="EU Pay Transparency Readiness Check preview image">
+<meta property="og:site_name" content="ScaleableWorks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EU Pay Transparency Readiness Check">
+<meta name="twitter:description" content="Answer 8 quick questions to see how ready your organisation is for the EU Pay Transparency Directive.">
+<meta name="twitter:image" content="https://your-domain.com/eu-pay-transparency-readiness-check/og-preview.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Analytics removed for anonymous version. Add only privacy-friendly aggregate analytics if needed. -->
+
+<style>
+  :root {
+    --red: #c62828;
+    --red-light: #d84040;
+    --white: #ffffff;
+    --off-white: #faf8f6;
+    --grey-light: #eae6e1;
+    --grey-mid: #cfc8c1;
+    --charcoal: #1a1a1a;
+    --text: #2a2a2a;
+    --text-light: #6b6b6b;
+    --green: #2d8e5e;
+    --amber: #c98a1e;
+    --coral: #d14b30;
+    --shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  a { color: var(--red); }
+  a:hover { color: var(--red-light); }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .screen { display: none; flex-direction: column; flex: 1; }
+  .screen.active { display: flex; }
+
+  .intro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 0 24px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 3px;
+    margin-bottom: 28px;
+    width: fit-content;
+  }
+
+  .intro h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 7vw, 48px);
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .intro h1 span { color: var(--red); }
+
+  .intro p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text-light);
+    margin-bottom: 12px;
+    max-width: 560px;
+  }
+
+  .intro .time-note {
+    font-size: 14px;
+    color: var(--red);
+    font-weight: 600;
+    margin-top: 8px;
+    margin-bottom: 24px;
+  }
+
+  .intro-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 18px 0 28px;
+  }
+
+  .mini-card {
+    background: var(--off-white);
+    border: 1px solid var(--grey-light);
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  .mini-card strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--charcoal);
+  }
+
+  .mini-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    color: var(--text-light);
+  }
+
+  .intro-notice,
+  .privacy-box,
+  .disclaimer-box,
+  .lead-form,
+  .result-breakdown,
+  .download-box {
+    background: var(--off-white);
+    border-radius: 10px;
+    padding: 22px;
+    border: 1px solid var(--grey-light);
+    box-shadow: var(--shadow);
+  }
+
+  .intro-notice {
+    margin-bottom: 28px;
+  }
+
+  .intro-notice p,
+  .privacy-box p,
+  .disclaimer-box p,
+  .download-box p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .button-row,
+  .cta-buttons,
+  .answer-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn,
+  .btn-start,
+  .btn-secondary,
+  .btn-restart,
+  .btn-answer,
+  .btn-download,
+  .btn-cta {
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+  }
+
+  .btn-start,
+  .btn-download,
+  .btn-cta.primary {
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 16px 28px;
+  }
+
+  .btn-start:hover,
+  .btn-download:hover,
+  .btn-cta.primary:hover {
+    background: var(--red-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary,
+  .btn-restart,
+  .btn-cta.secondary {
+    background: var(--white);
+    border: 2px solid var(--grey-light);
+    color: var(--text-light);
+    padding: 14px 24px;
+  }
+
+  .btn-secondary:hover,
+  .btn-restart:hover,
+  .btn-cta.secondary:hover {
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  .progress-wrap { padding: 24px 0 8px; }
+
+  .progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .progress-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .progress-count {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--charcoal);
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: var(--grey-light);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--red);
+    border-radius: 4px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .question-area,
+  .lead-area,
+  .results {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 0;
+  }
+
+  .question-number {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .question-text,
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 5vw, 30px);
+    line-height: 1.35;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-light);
+    margin-bottom: 28px;
+    max-width: 620px;
+  }
+
+  .btn-answer {
+    flex: 1;
+    padding: 20px;
+    border: 2px solid var(--grey-light);
+    background: var(--white);
+    color: var(--text);
+    flex-direction: column;
+    gap: 6px;
+    min-width: 150px;
+  }
+
+  .btn-answer .icon {
+    font-size: 28px;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-answer:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  .btn-answer:hover .icon { transform: scale(1.15); }
+  .btn-answer.yes:hover { border-color: var(--green); background: rgba(45, 142, 94, 0.04); }
+  .btn-answer.no:hover { border-color: var(--red); background: rgba(198, 40, 40, 0.04); }
+
+  .lead-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .field.full { grid-column: 1 / -1; }
+  .field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--charcoal);
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    padding: 14px 14px;
+    border: 1px solid var(--grey-mid);
+    border-radius: 8px;
+    font: inherit;
+    background: var(--white);
+    color: var(--text);
+  }
+
+  .field input:focus,
+  .field select:focus {
+    outline: 2px solid rgba(198, 40, 40, 0.2);
+    border-color: var(--red);
+  }
+
+  .checkbox-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-light);
+    margin: 4px 0 0;
+  }
+
+  .checkbox-wrap input {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: var(--red);
+  }
+
+  .tiny-note {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-light);
+    opacity: 0.9;
+  }
+
+  .error-msg {
+    margin-top: 14px;
+    color: var(--red);
+    font-size: 14px;
+    font-weight: 600;
+    display: none;
+  }
+
+  .score-ring {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 28px;
+    position: relative;
+  }
+
+  .score-ring svg {
+    transform: rotate(-90deg);
+    width: 160px;
+    height: 160px;
+  }
+
+  .score-ring .bg {
+    fill: none;
+    stroke: var(--grey-light);
+    stroke-width: 8;
+  }
+
+  .score-ring .fill {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.3s;
+  }
+
+  .score-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .score-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+
+  .score-of {
+    font-size: 14px;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  .result-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(24px, 5vw, 32px);
+    color: var(--charcoal);
+    text-align: center;
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+
+  .result-desc {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 32px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .result-breakdown { margin-bottom: 24px; }
+
+  .result-breakdown h3,
+  .privacy-box h3,
+  .disclaimer-box h3,
+  .download-box h3 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+
+  .breakdown-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--grey-light);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  .breakdown-item:last-child { border-bottom: none; }
+
+  .breakdown-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin-top: 1px;
+  }
+
+  .breakdown-icon.yes { background: rgba(45, 142, 94, 0.12); color: var(--green); }
+  .breakdown-icon.no { background: rgba(198, 40, 40, 0.12); color: var(--red); }
+
+  .priority-box {
+    background: var(--red);
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+
+  .priority-box h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .priority-box p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+  }
+
+  .download-box,
+  .privacy-box,
+  .disclaimer-box {
+    margin-bottom: 20px;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 8px 0 24px;
+  }
+
+  .cta-section p {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+
+  .red-line {
+    width: 48px;
+    height: 3px;
+    background: var(--red);
+    margin: 0 auto 28px;
+    border-radius: 2px;
+  }
+
+  .fade-in {
+    animation: fadeUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .footer-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-light);
+    padding: 16px 0 22px;
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 16px; }
+    .intro-cards,
+    .lead-grid {
+      grid-template-columns: 1fr;
+    }
+    .button-row,
+    .cta-buttons,
+    .answer-btns {
+      flex-direction: column;
+    }
+    .btn-answer,
+    .btn-start,
+    .btn-download,
+    .btn-cta,
+    .btn-secondary,
+    .btn-restart {
+      width: 100%;
+    }
+    .intro { padding-top: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="screen active" id="introScreen">
+    <div class="intro">
+      <div class="badge">Readiness Check</div>
+      <h1>Is your organisation ready for the <span>EU Pay Transparency Directive</span>?</h1>
+      <p>8 quick questions. Honest answers only. Find out where you stand — and what to prioritise next.</p>
+      <div class="time-note">Takes less than 2 minutes</div>
+
+      <div class="intro-cards" aria-label="What you will get">
+        <div class="mini-card">
+          <strong>Fast diagnostic</strong>
+          <p>A simple snapshot across job architecture, data, governance, and manager readiness.</p>
+        </div>
+        <div class="mini-card">
+          <strong>Clear next step</strong>
+          <p>A practical priority recommendation based on your answers.</p>
+        </div>
+      </div>
+
+      <div class="intro-notice">
+        <p><strong>Important:</strong> this check is for general informational purposes only. It is not legal, regulatory, tax, or compliance advice, and it should not be relied on as a substitute for tailored professional advice for your organisation.</p>
+      </div>
+
+      <div class="button-row">
+        <button class="btn-start" onclick="startQuiz()">Start the check</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen" id="quizScreen">
+    <div class="progress-wrap">
+      <div class="progress-top">
+        <span class="progress-label">Progress</span>
+        <span class="progress-count" id="progressCount">1 / 8</span>
+      </div>
+      <div class="progress-bar" aria-hidden="true">
+        <div class="progress-fill" id="progressFill" style="width: 12.5%"></div>
+      </div>
+    </div>
+    <div class="question-area fade-in" id="questionArea">
+      <div class="question-number" id="qNumber">Question 01</div>
+      <div class="question-text" id="qText"></div>
+      <div class="answer-btns">
+        <button class="btn-answer yes" onclick="answer(true)" aria-label="Answer yes">
+          <span class="icon" aria-hidden="true">&#10003;</span>
+          Yes
+        </button>
+        <button class="btn-answer no" onclick="answer(false)" aria-label="Answer no">
+          <span class="icon" aria-hidden="true">&#10007;</span>
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen" id="resultScreen">
+    <div class="results fade-in" id="resultsContent"></div>
+  </div>
+
+  <div class="footer-note">
+    Anonymous EU Pay Transparency Readiness Check · For general informational purposes only
+  </div>
+</div>
+
+<script>
+const questions = [
+  { id: 1, text: "Do you have a defensible job architecture in place?", area: "Job Architecture" },
+  { id: 2, text: "Can you pull gender pay data across all EU entities right now?", area: "Data Readiness" },
+  { id: 3, text: "Do you have access to market data — or budget to get it?", area: "Market Data" },
+  { id: 4, text: "Do you know where your 5%+ pay gaps are — and why they exist?", area: "Gap Analysis" },
+  { id: 5, text: "Do you have a process to track pay data requests from employees and works councils?", area: "Request Management" },
+  { id: 6, text: "Are your managers trained to have pay conversations?", area: "Manager Capability" },
+  { id: 7, text: "Do you have a country-by-country view of how the Directive is being transposed?", area: "Multi-country Readiness" },
+  { id: 8, text: "Is there a clear internal owner for pay transparency readiness?", area: "Governance" }
+];
+
+let current = 0;
+let answers = [];
+
+function showScreen(screenId) {
+  document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
+  document.getElementById(screenId).classList.add('active');
+}
+
+function startQuiz() {
+  showScreen('quizScreen');
+  showQuestion();
+}
+
+function showQuestion() {
+  const area = document.getElementById('questionArea');
+  area.classList.remove('fade-in');
+  void area.offsetWidth;
+  area.classList.add('fade-in');
+
+  document.getElementById('qNumber').textContent = 'Question ' + String(current + 1).padStart(2, '0');
+  document.getElementById('qText').textContent = questions[current].text;
+  document.getElementById('progressCount').textContent = (current + 1) + ' / ' + questions.length;
+  document.getElementById('progressFill').style.width = (((current + 1) / questions.length) * 100) + '%';
+}
+
+function answer(isYes) {
+  answers.push({ area: questions[current].area, answer: isYes, text: questions[current].text });
+  current++;
+  if (current < questions.length) {
+    showQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function getResultsModel() {
+  const yesCount = answers.filter(a => a.answer).length;
+  const pct = yesCount / questions.length;
+
+  let color, title, desc, priority;
+
+  if (yesCount >= 7) {
+    color = 'var(--green)';
+    title = "You're in strong shape.";
+    desc = "Most of the foundations are there. Focus on fine-tuning, stress-testing your processes, and running a dry report before your internal deadline.";
+    priority = "Run a full dry report and test your governance, data flow, and manager guidance end to end. Fix any gaps that surface.";
+  } else if (yesCount >= 5) {
+    color = 'var(--red)';
+    title = "Getting there — but gaps remain.";
+    desc = "You've made progress, but the areas you flagged 'no' need focused attention. The good news: a structured plan can still move this forward quickly.";
+    priority = "Prioritise your 'no' areas next. Start with data readiness and job architecture — everything else builds on those.";
+  } else if (yesCount >= 3) {
+    color = 'var(--amber)';
+    title = "Behind the curve.";
+    desc = "There is real work to do. These gaps tend to compound one another, so it helps to sequence them into a practical plan.";
+    priority = "Start with an honest gap analysis, then fix the foundations — job architecture, data, and documentation — before manager rollout.";
+  } else {
+    color = 'var(--coral)';
+    title = "You need to start now.";
+    desc = "Most of the building blocks are not yet in place. That is fixable, but it requires ownership, structure, and prioritisation.";
+    priority = "Map your job architecture, assess HRIS and pay-data capability, assign a clear owner, and build a staged roadmap.";
+  }
+
+  return { yesCount, pct, color, title, desc, priority };
+}
+
+function buildSummarySections() {
+  const strengths = answers.filter(a => a.answer).map(a => a.area);
+  const gaps = answers.filter(a => !a.answer).map(a => a.area);
+
+  const strengthsHtml = strengths.length
+    ? '<p><strong>Areas already in better shape:</strong> ' + escapeHtml(strengths.join(', ')) + '.</p>'
+    : '<p><strong>Areas already in better shape:</strong> None confirmed yet.</p>';
+
+  const gapsHtml = gaps.length
+    ? '<p><strong>Priority gaps to address:</strong> ' + escapeHtml(gaps.join(', ')) + '.</p>'
+    : '<p><strong>Priority gaps to address:</strong> No major gaps flagged in this quick check.</p>';
+
+  let recommendation = '';
+  if (gaps.includes('Job Architecture') || gaps.includes('Data Readiness')) {
+    recommendation = 'Start with job architecture and pay-data readiness. These are the foundations for defensible reporting, pay gap analysis, and employee communications.';
+  } else if (gaps.includes('Manager Capability') || gaps.includes('Governance')) {
+    recommendation = 'Your technical foundations appear stronger than your operating model. Focus next on ownership, escalation routes, and manager readiness for pay conversations.';
+  } else if (gaps.length === 0) {
+    recommendation = 'Your answers suggest a relatively mature starting point. Move from design into testing: dry-run reporting, challenge assumptions, and tighten documentation.';
+  } else {
+    recommendation = 'Build a sequenced roadmap rather than treating every gap at once. Prioritise the items that affect compliance evidence, reporting quality, and decision consistency.';
+  }
+
+  return (
+    '<div class="result-breakdown">' +
+      '<h3>Your summary</h3>' +
+      strengthsHtml +
+      gapsHtml +
+      '<p><strong>Recommended focus:</strong> ' + escapeHtml(recommendation) + '</p>' +
+    '</div>'
+  );
+}
+
+function showResults() {
+  showScreen('resultScreen');
+
+  const result = getResultsModel();
+  const circumference = 2 * Math.PI * 68;
+  const offset = circumference - (result.pct * circumference);
+
+  let breakdownHTML = '';
+  for (let i = 0; i < answers.length; i++) {
+    const a = answers[i];
+    breakdownHTML += '<div class="breakdown-item">' +
+      '<div class="breakdown-icon ' + (a.answer ? 'yes' : 'no') + '">' + (a.answer ? '&#10003;' : '&#10007;') + '</div>' +
+      '<div><strong>' + escapeHtml(a.area) + '</strong> — ' + (a.answer ? 'In place' : 'Needs attention') + '</div>' +
+      '</div>';
+  }
+
+  document.getElementById('resultsContent').innerHTML =
+    '<div class="score-ring">' +
+      '<svg viewBox="0 0 160 160">' +
+        '<circle class="bg" cx="80" cy="80" r="68" />' +
+        '<circle class="fill" cx="80" cy="80" r="68" stroke="' + result.color + '" stroke-dasharray="' + circumference + '" stroke-dashoffset="' + circumference + '" id="scoreCircle" />' +
+      '</svg>' +
+      '<div class="score-center">' +
+        '<div class="score-num">' + result.yesCount + '</div>' +
+        '<div class="score-of">out of ' + questions.length + '</div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="red-line"></div>' +
+    '<div class="result-title">' + result.title + '</div>' +
+    '<div class="result-desc">' + result.desc + '</div>' +
+
+    buildSummarySections() +
+
+    '<div class="result-breakdown">' +
+      '<h3>Your answers</h3>' +
+      breakdownHTML +
+    '</div>' +
+
+    '<div class="priority-box">' +
+      '<h3>What to do next</h3>' +
+      '<p>' + result.priority + '</p>' +
+    '</div>' +
+
+    '<div class="privacy-box">' +
+      '<h3>Privacy notice</h3>' +
+      '<p>This anonymous version stores answers only in your browser session for the duration of this visit. It does not ask for personal details and no responses are submitted anywhere by default.</p>' +
+    '</div>' +
+
+    '<div class="disclaimer-box">' +
+      '<h3>Important disclaimer</h3>' +
+      '<p>This tool is provided for general informational purposes only. It is a simplified readiness check and does not constitute legal advice, compliance advice, or a formal assessment of obligations under the EU Pay Transparency Directive or any national implementing law. It is provided without warranties, and any action taken should be reviewed against your organisation\'s own facts, local laws, and professional advice.</p>' +
+    '</div>' +
+
+    '<div class="cta-section">' +
+      '<p>This anonymous diagnostic provides a high-level indication of readiness based on the answers selected.</p>' +
+      '<div class="cta-buttons">' +
+        '<button class="btn-download" onclick="downloadSummary()">Download my readiness summary</button>' +
+        '<button class="btn-restart" onclick="restart()">Retake the check</button>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="footer-note">EU Pay Transparency Readiness Check</div>';
+
+  setTimeout(function() {
+    const circle = document.getElementById('scoreCircle');
+    if (circle) circle.style.strokeDashoffset = offset;
+  }, 100);
+}
+
+function restart() {
+  current = 0;
+  answers = [];
+  showScreen('introScreen');
+}
+
+function downloadSummary() {
+  const result = getResultsModel();
+  const lines = [
+    'EU Pay Transparency Readiness Summary',
+    '-----------------------------------',
+    'Anonymous summary',
+    '',
+    'Score: ' + result.yesCount + ' out of ' + questions.length,
+    'Headline: ' + result.title,
+    'Summary: ' + result.desc,
+    'Priority: ' + result.priority,
+    '',
+    'Answers:'
+  ];
+
+  answers.forEach((a, index) => {
+    lines.push((index + 1) + '. ' + a.text + ' — ' + (a.answer ? 'Yes' : 'No'));
+  });
+
+  lines.push('');
+  lines.push('Disclaimer: This screening tool provides general information only and is not legal or compliance advice.');
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'eu-pay-transparency-readiness-summary.txt';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+</script>
+</body>
+</html>
