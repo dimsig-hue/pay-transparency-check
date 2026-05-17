@@ -1,901 +1,689 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EU Pay Transparency Readiness Check | ScaleableWorks</title>
-<meta name="description" content="A short EU Pay Transparency readiness check for organisations to identify priority actions across job architecture, pay data, governance, and manager capability.">
-<meta name="author" content="[Dimashi Sigera]">
-<link rel="canonical" href="https://dimsig-hue/eu-pay-transparency-readiness-check/">
-
-<!-- Open Graph / LinkedIn -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="EU Pay Transparency Readiness Check">
-<meta property="og:description" content="Answer 8 quick questions to see how ready your organisation is for the EU Pay Transparency Directive.">
-<meta property="og:url" content="https://dimsig-hue/eu-pay-transparency-readiness-check/">
-<meta property="og:image" content="https://dimsig-hue/eu-pay-transparency-readiness-check/og-preview.png">
-<meta property="og:image:alt" content="EU Pay Transparency Readiness Check preview image">
-<meta property="og:site_name" content="ScaleableWorks">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="EU Pay Transparency Readiness Check">
-<meta name="twitter:description" content="Answer 8 quick questions to see how ready your organisation is for the EU Pay Transparency Directive.">
-<meta name="twitter:image" content="https://dimsig-hue/eu-pay-transparency-readiness-check/og-preview.png">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Analytics removed for anonymous version. Add only privacy-friendly aggregate analytics if needed. -->
-
+<title>Pay Transparency Readiness Check</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap');
+
   :root {
-    --red: #c62828;
-    --red-light: #d84040;
-    --white: #ffffff;
-    --off-white: #faf8f6;
-    --grey-light: #eae6e1;
-    --grey-mid: #cfc8c1;
-    --charcoal: #1a1a1a;
-    --text: #2a2a2a;
-    --text-light: #6b6b6b;
-    --green: #2d8e5e;
-    --amber: #c98a1e;
-    --coral: #d14b30;
-    --shadow: 0 8px 24px rgba(0,0,0,0.06);
+    --red: #C8102E;
+    --red-dark: #A00D24;
+    --red-light: #FDE8EC;
+    --white: #FFFFFF;
+    --black: #1A1A1A;
+    --gray-50: #FAFAFA;
+    --gray-200: #E5E5E5;
+    --gray-400: #A3A3A3;
+    --gray-600: #525252;
+    --gray-800: #262626;
+    --green: #16A34A;
+    --amber: #D97706;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: var(--white);
-    color: var(--text);
+    background: var(--gray-50);
+    color: var(--black);
     min-height: 100vh;
-    overflow-x: hidden;
   }
 
-  a { color: var(--red); }
-  a:hover { color: var(--red-light); }
-
-  .container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 20px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .screen { display: none; flex-direction: column; flex: 1; }
-  .screen.active { display: flex; }
+  .screen { display: none; min-height: 100vh; }
+  .screen.active { display: flex; flex-direction: column; }
 
   .intro {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    padding: 40px 0 24px;
+    padding: 40px 24px;
+    text-align: center;
+    background: var(--white);
   }
 
-  .badge {
+  .intro-badge {
     display: inline-block;
-    background: var(--red);
-    color: var(--white);
-    font-size: 11px;
+    background: var(--red-light);
+    color: var(--red);
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: 3px;
-    margin-bottom: 28px;
-    width: fit-content;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 32px;
   }
 
   .intro h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(32px, 7vw, 48px);
+    font-size: clamp(28px, 5vw, 42px);
     line-height: 1.15;
-    color: var(--charcoal);
-    margin-bottom: 20px;
-  }
-
-  .intro h1 span { color: var(--red); }
-
-  .intro p {
-    font-size: 17px;
-    line-height: 1.65;
-    color: var(--text-light);
-    margin-bottom: 12px;
+    color: var(--black);
+    margin-bottom: 16px;
     max-width: 560px;
   }
 
-  .intro .time-note {
-    font-size: 14px;
-    color: var(--red);
-    font-weight: 600;
-    margin-top: 8px;
-    margin-bottom: 24px;
+  .intro p {
+    font-size: 16px;
+    color: var(--gray-600);
+    max-width: 440px;
+    line-height: 1.6;
+    margin-bottom: 12px;
   }
 
-  .intro-cards {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-    margin: 18px 0 28px;
-  }
-
-  .mini-card {
-    background: var(--off-white);
-    border: 1px solid var(--grey-light);
-    border-radius: 10px;
-    padding: 16px;
-  }
-
-  .mini-card strong {
-    display: block;
-    margin-bottom: 6px;
-    color: var(--charcoal);
-  }
-
-  .mini-card p {
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 0;
-    color: var(--text-light);
-  }
-
-  .intro-notice,
-  .privacy-box,
-  .disclaimer-box,
-  .lead-form,
-  .result-breakdown,
-  .download-box {
-    background: var(--off-white);
-    border-radius: 10px;
-    padding: 22px;
-    border: 1px solid var(--grey-light);
-    box-shadow: var(--shadow);
-  }
-
-  .intro-notice {
-    margin-bottom: 28px;
-  }
-
-  .intro-notice p,
-  .privacy-box p,
-  .disclaimer-box p,
-  .download-box p {
-    font-size: 14px;
-    line-height: 1.65;
-    color: var(--text-light);
-    margin: 0;
-  }
-
-  .button-row,
-  .cta-buttons,
-  .answer-btns {
+  .intro-stats {
     display: flex;
-    gap: 14px;
+    gap: 24px;
+    margin-bottom: 40px;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
-  .btn,
-  .btn-start,
-  .btn-secondary,
-  .btn-restart,
-  .btn-answer,
-  .btn-download,
-  .btn-cta {
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-decoration: none;
+  .intro-stat { text-align: center; }
+
+  .intro-stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .intro-stat-label {
+    font-size: 11px;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+    max-width: 120px;
+  }
+
+  .btn {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-height: 52px;
-  }
-
-  .btn-start,
-  .btn-download,
-  .btn-cta.primary {
+    gap: 8px;
     background: var(--red);
     color: var(--white);
     border: none;
-    padding: 16px 28px;
-  }
-
-  .btn-start:hover,
-  .btn-download:hover,
-  .btn-cta.primary:hover {
-    background: var(--red-light);
-    transform: translateY(-1px);
-  }
-
-  .btn-secondary,
-  .btn-restart,
-  .btn-cta.secondary {
-    background: var(--white);
-    border: 2px solid var(--grey-light);
-    color: var(--text-light);
-    padding: 14px 24px;
-  }
-
-  .btn-secondary:hover,
-  .btn-restart:hover,
-  .btn-cta.secondary:hover {
-    border-color: var(--red);
-    color: var(--red);
-  }
-
-  .progress-wrap { padding: 24px 0 8px; }
-
-  .progress-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-
-  .progress-label {
-    font-size: 13px;
+    padding: 16px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
     font-weight: 600;
-    color: var(--text-light);
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    text-decoration: none;
   }
+  .btn:hover { background: var(--red-dark); }
+  .btn:active { transform: scale(0.98); }
 
-  .progress-count {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--charcoal);
-  }
+  .question-screen { background: var(--white); }
+  .progress-bar { height: 4px; background: var(--gray-200); }
+  .progress-fill { height: 100%; background: var(--red); transition: width 0.4s ease; }
 
-  .progress-bar {
-    height: 4px;
-    background: var(--grey-light);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: var(--red);
-    border-radius: 4px;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .question-area,
-  .lead-area,
-  .results {
+  .question-container {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 30px 0;
-  }
-
-  .question-number {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--red);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-
-  .question-text,
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(22px, 5vw, 30px);
-    line-height: 1.35;
-    color: var(--charcoal);
-    margin-bottom: 20px;
-  }
-
-  .section-subtitle {
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--text-light);
-    margin-bottom: 28px;
-    max-width: 620px;
-  }
-
-  .btn-answer {
-    flex: 1;
-    padding: 20px;
-    border: 2px solid var(--grey-light);
-    background: var(--white);
-    color: var(--text);
-    flex-direction: column;
-    gap: 6px;
-    min-width: 150px;
-  }
-
-  .btn-answer .icon {
-    font-size: 28px;
-    transition: transform 0.2s ease;
-  }
-
-  .btn-answer:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  }
-
-  .btn-answer:hover .icon { transform: scale(1.15); }
-  .btn-answer.yes:hover { border-color: var(--green); background: rgba(45, 142, 94, 0.04); }
-  .btn-answer.no:hover { border-color: var(--red); background: rgba(198, 40, 40, 0.04); }
-
-  .lead-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-  }
-
-  .field.full { grid-column: 1 / -1; }
-  .field label {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--charcoal);
-  }
-
-  .field input,
-  .field select {
+    padding: 40px 24px;
+    max-width: 600px;
+    margin: 0 auto;
     width: 100%;
-    padding: 14px 14px;
-    border: 1px solid var(--grey-mid);
-    border-radius: 8px;
-    font: inherit;
-    background: var(--white);
-    color: var(--text);
   }
 
-  .field input:focus,
-  .field select:focus {
-    outline: 2px solid rgba(198, 40, 40, 0.2);
-    border-color: var(--red);
-  }
-
-  .checkbox-wrap {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--text-light);
-    margin: 4px 0 0;
-  }
-
-  .checkbox-wrap input {
-    width: 18px;
-    height: 18px;
-    margin-top: 2px;
-    accent-color: var(--red);
-  }
-
-  .tiny-note {
-    font-size: 12px;
-    line-height: 1.6;
-    color: var(--text-light);
-    opacity: 0.9;
-  }
-
-  .error-msg {
-    margin-top: 14px;
-    color: var(--red);
-    font-size: 14px;
+  .q-counter {
+    font-size: 13px;
     font-weight: 600;
-    display: none;
+    color: var(--red);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
   }
 
-  .score-ring {
-    width: 160px;
-    height: 160px;
-    margin: 0 auto 28px;
+  .q-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(20px, 4vw, 26px);
+    line-height: 1.35;
+    color: var(--black);
+    margin-bottom: 12px;
+  }
+
+  .q-source {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-bottom: 28px;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .options { display: flex; flex-direction: column; gap: 12px; }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border: 2px solid var(--gray-200);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--white);
+  }
+  .option:hover { border-color: var(--red); background: var(--red-light); }
+
+  .option-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--gray-400);
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .option:hover .option-dot { border-color: var(--red); }
+
+  .option-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--gray-800);
+  }
+
+  .gate-screen {
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    text-align: center;
+    background: var(--white);
+  }
+
+  .score-preview {
     position: relative;
-  }
-
-  .score-ring svg {
-    transform: rotate(-90deg);
     width: 160px;
     height: 160px;
+    margin: 0 auto 24px;
   }
 
-  .score-ring .bg {
-    fill: none;
-    stroke: var(--grey-light);
-    stroke-width: 8;
-  }
+  .score-ring { transform: rotate(-90deg); }
+  .score-ring-bg { fill: none; stroke: var(--gray-200); stroke-width: 8; }
+  .score-ring-fill { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 1s ease; }
 
-  .score-ring .fill {
-    fill: none;
-    stroke-width: 8;
-    stroke-linecap: round;
-    transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.3s;
-  }
-
-  .score-center {
+  .score-number {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
-  }
-
-  .score-num {
     font-family: 'DM Serif Display', serif;
     font-size: 42px;
-    color: var(--charcoal);
-    line-height: 1;
+    color: var(--black);
   }
+  .score-number span { font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--gray-600); }
 
-  .score-of {
-    font-size: 14px;
-    color: var(--text-light);
-    font-weight: 500;
-  }
+  .gate-title { font-family: 'DM Serif Display', serif; font-size: 24px; margin-bottom: 8px; }
+  .gate-subtitle { font-size: 15px; color: var(--gray-600); max-width: 400px; margin: 0 auto 32px; line-height: 1.5; }
 
-  .result-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(24px, 5vw, 32px);
-    color: var(--charcoal);
-    text-align: center;
-    margin-bottom: 14px;
-    line-height: 1.25;
-  }
-
-  .result-desc {
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--text-light);
-    text-align: center;
-    margin-bottom: 32px;
-    max-width: 540px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .result-breakdown { margin-bottom: 24px; }
-
-  .result-breakdown h3,
-  .privacy-box h3,
-  .disclaimer-box h3,
-  .download-box h3 {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-light);
-    margin-bottom: 16px;
-  }
-
-  .breakdown-item {
+  .gate-form {
+    max-width: 380px;
+    margin: 0 auto;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
     gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--grey-light);
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--text);
+    text-align: left;
   }
 
-  .breakdown-item:last-child { border-bottom: none; }
+  .gate-form label { font-size: 13px; font-weight: 600; color: var(--gray-800); }
 
-  .breakdown-icon {
-    flex-shrink: 0;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
+  .gate-form input, .gate-form select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--black);
+    transition: border-color 0.2s;
+    background: var(--white);
+    -webkit-appearance: none;
+  }
+  .gate-form input:focus, .gate-form select:focus { outline: none; border-color: var(--red); }
+  .gate-form .btn { margin-top: 8px; width: 100%; justify-content: center; }
+  .gate-note { font-size: 12px; color: var(--gray-400); margin-top: 8px; text-align: center; }
+  .field-group { display: flex; flex-direction: column; gap: 4px; }
+
+  .results-screen { background: var(--gray-50); padding: 0; }
+  .results-header { background: var(--red); color: var(--white); padding: 40px 24px 48px; text-align: center; }
+  .results-header h2 { font-family: 'DM Serif Display', serif; font-size: 28px; margin-bottom: 4px; }
+  .results-header p { font-size: 14px; opacity: 0.85; }
+
+  .results-body { max-width: 640px; margin: -24px auto 40px; padding: 0 16px; }
+
+  .result-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    margin-top: 1px;
+    gap: 16px;
+    align-items: flex-start;
   }
 
-  .breakdown-icon.yes { background: rgba(45, 142, 94, 0.12); color: var(--green); }
-  .breakdown-icon.no { background: rgba(198, 40, 40, 0.12); color: var(--red); }
-
-  .priority-box {
-    background: var(--red);
-    border-radius: 10px;
-    padding: 28px;
-    margin-bottom: 24px;
+  .result-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0; margin-top: 2px;
   }
+  .result-icon.red { background: var(--red-light); color: var(--red); }
+  .result-icon.amber { background: #FEF3C7; color: var(--amber); }
+  .result-icon.green { background: #DCFCE7; color: var(--green); }
 
-  .priority-box h3 {
+  .result-content h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--black); }
+  .result-content p { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
+
+  .result-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 3px 8px; border-radius: 4px; margin-bottom: 6px;
+  }
+  .result-tag.red { background: var(--red-light); color: var(--red); }
+  .result-tag.amber { background: #FEF3C7; color: var(--amber); }
+  .result-tag.green { background: #DCFCE7; color: var(--green); }
+
+  .cta-card {
+    background: var(--black); color: var(--white); border-radius: 12px;
+    padding: 32px 28px; text-align: center; margin-top: 24px;
+  }
+  .cta-card h3 { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 8px; }
+  .cta-card p { font-size: 14px; opacity: 0.7; margin-bottom: 24px; line-height: 1.5; }
+  .cta-card .btn { background: var(--red); }
+
+  .cta-contact { margin-top: 20px; }
+
+  .cta-name {
     font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    color: var(--white);
+    font-size: 18px;
     margin-bottom: 6px;
   }
 
-  .priority-box p {
-    font-size: 15px;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.6;
+  .cta-role {
+    font-size: 13px;
+    opacity: 0.7;
+    line-height: 1.4;
+    margin-bottom: 16px;
   }
 
-  .download-box,
-  .privacy-box,
-  .disclaimer-box {
+  .cta-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     margin-bottom: 20px;
+    font-size: 14px;
   }
 
-  .cta-section {
-    text-align: center;
-    padding: 8px 0 24px;
+  .cta-details a {
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    transition: border-color 0.2s;
   }
 
-  .cta-section p {
-    font-size: 15px;
-    color: var(--text-light);
-    margin-bottom: 18px;
-    line-height: 1.5;
+  .cta-details a:hover {
+    border-color: var(--white);
   }
 
-  .red-line {
-    width: 48px;
-    height: 3px;
-    background: var(--red);
-    margin: 0 auto 28px;
-    border-radius: 2px;
+  .cta-linkedin {
+    display: inline-flex;
+    justify-content: center;
   }
 
-  .fade-in {
-    animation: fadeUp 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .footer-note {
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-light);
-    padding: 16px 0 22px;
-    opacity: 0.8;
-    line-height: 1.6;
-  }
-
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  @media (max-width: 640px) {
-    .container { padding: 16px; }
-    .intro-cards,
-    .lead-grid {
-      grid-template-columns: 1fr;
-    }
-    .button-row,
-    .cta-buttons,
-    .answer-btns {
-      flex-direction: column;
-    }
-    .btn-answer,
-    .btn-start,
-    .btn-download,
-    .btn-cta,
-    .btn-secondary,
-    .btn-restart {
-      width: 100%;
-    }
-    .intro { padding-top: 24px; }
-  }
+  .footer-strip { text-align: center; padding: 24px; font-size: 12px; color: var(--gray-400); }
+  .footer-strip a { color: var(--red); text-decoration: none; }
 </style>
 </head>
 <body>
-<div class="container">
 
-  <div class="screen active" id="introScreen">
-    <div class="intro">
-      <div class="badge">Readiness Check</div>
-      <h1>Is your organisation ready for the <span>EU Pay Transparency Directive</span>?</h1>
-      <p>8 quick questions. Honest answers only. Find out where you stand — and what to prioritise next.</p>
-      <div class="time-note">Takes less than 2 minutes</div>
-
-      <div class="intro-cards" aria-label="What you will get">
-        <div class="mini-card">
-          <strong>Fast diagnostic</strong>
-          <p>A simple snapshot across job architecture, data, governance, and manager readiness.</p>
-        </div>
-        <div class="mini-card">
-          <strong>Clear next step</strong>
-          <p>A practical priority recommendation based on your answers.</p>
-        </div>
-      </div>
-
-      <div class="intro-notice">
-        <p><strong>Important:</strong> this check is for general informational purposes only. It is not legal, regulatory, tax, or compliance advice, and it should not be relied on as a substitute for tailored professional advice for your organisation.</p>
-      </div>
-
-      <div class="button-row">
-        <button class="btn-start" onclick="startQuiz()">Start the check</button>
-      </div>
+<div id="introScreen" class="screen intro active">
+  <div class="intro-badge">Free Assessment</div>
+  <h1>How Ready Is Your Organisation for Pay Transparency?</h1>
+  <p>10 questions. 2 minutes. Find out exactly where you stand — and what to prioritise first.</p>
+  <div class="intro-stats">
+    <div class="intro-stat">
+      <div class="intro-stat-number">19%</div>
+      <div class="intro-stat-label">of organisations say they're ready</div>
+    </div>
+    <div class="intro-stat">
+      <div class="intro-stat-number">9%</div>
+      <div class="intro-stat-label">confident managers can discuss pay</div>
+    </div>
+    <div class="intro-stat">
+      <div class="intro-stat-number">40%</div>
+      <div class="intro-stat-label">have no documented comp philosophy</div>
     </div>
   </div>
+  <button class="btn" onclick="startQuiz()">Start the Check →</button>
+</div>
 
-  <div class="screen" id="quizScreen">
-    <div class="progress-wrap">
-      <div class="progress-top">
-        <span class="progress-label">Progress</span>
-        <span class="progress-count" id="progressCount">1 / 8</span>
-      </div>
-      <div class="progress-bar" aria-hidden="true">
-        <div class="progress-fill" id="progressFill" style="width: 12.5%"></div>
-      </div>
-    </div>
-    <div class="question-area fade-in" id="questionArea">
-      <div class="question-number" id="qNumber">Question 01</div>
-      <div class="question-text" id="qText"></div>
-      <div class="answer-btns">
-        <button class="btn-answer yes" onclick="answer(true)" aria-label="Answer yes">
-          <span class="icon" aria-hidden="true">&#10003;</span>
-          Yes
-        </button>
-        <button class="btn-answer no" onclick="answer(false)" aria-label="Answer no">
-          <span class="icon" aria-hidden="true">&#10007;</span>
-          No
-        </button>
-      </div>
-    </div>
+<div id="questionScreen" class="screen question-screen">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="question-container">
+    <div class="q-counter" id="qCounter"></div>
+    <div class="q-text" id="qText"></div>
+    <div class="q-source" id="qSource"></div>
+    <div class="options" id="optionsContainer"></div>
   </div>
+</div>
 
-  <div class="screen" id="resultScreen">
-    <div class="results fade-in" id="resultsContent"></div>
+<div id="gateScreen" class="screen gate-screen">
+  <div class="score-preview">
+    <svg class="score-ring" width="160" height="160" viewBox="0 0 160 160">
+      <circle class="score-ring-bg" cx="80" cy="80" r="68"/>
+      <circle class="score-ring-fill" id="scoreRing" cx="80" cy="80" r="68"
+        stroke-dasharray="427" stroke-dashoffset="427"/>
+    </svg>
+    <div class="score-number" id="scoreNumber">0<span>%</span></div>
   </div>
+  <h2 class="gate-title" id="gateTitle">Your score is ready.</h2>
+  <p class="gate-subtitle">Get your full breakdown — which areas are strong, which need urgent attention, and exactly where to focus first.</p>
+  <div class="gate-form">
+    <div class="field-group">
+      <label>Full Name</label>
+      <input type="text" id="userName" placeholder="e.g. Sarah van der Berg" required>
+    </div>
+    <div class="field-group">
+      <label>Work Email</label>
+      <input type="email" id="userEmail" placeholder="you@company.com" required>
+    </div>
+    <div class="field-group">
+      <label>Company Size</label>
+      <select id="companySize">
+        <option value="" disabled selected>Select</option>
+        <option value="<100">Under 100 employees</option>
+        <option value="100-149">100 – 149</option>
+        <option value="150-249">150 – 249</option>
+        <option value="250-2000">250 – 2,000</option>
+        <option value="2000-10000">2,000 – 10,000</option>
+        <option value="10000+">10,000+</option>
+      </select>
+    </div>
+    <button class="btn" onclick="submitGate()">Show My Full Results →</button>
+    <div class="gate-note">No spam. You'll receive your personalised report only.</div>
+  </div>
+</div>
 
-  <div class="footer-note">
-    Anonymous EU Pay Transparency Readiness Check · For general informational purposes only
+<div id="resultsScreen" class="screen results-screen">
+  <div class="results-header">
+    <h2 id="resultsTitle">Your Readiness Breakdown</h2>
+    <p id="resultsSubtitle"></p>
+  </div>
+  <div class="results-body" id="resultsBody"></div>
+  <div class="footer-strip">
+    Built by <a href="https://www.linkedin.com/in/dimashischeenstra/" target="_blank">Dimashi Sigera MCIPD, CPHR</a> · Sources: Korn Ferry, Payscale, Aon, WorldatWork, Syndio, Affirmity
   </div>
 </div>
 
 <script>
-const questions = [
-  { id: 1, text: "Do you have a defensible job architecture in place?", area: "Job Architecture" },
-  { id: 2, text: "Can you pull gender pay data across all EU entities right now?", area: "Data Readiness" },
-  { id: 3, text: "Do you have access to market data — or budget to get it?", area: "Market Data" },
-  { id: 4, text: "Do you know where your 5%+ pay gaps are — and why they exist?", area: "Gap Analysis" },
-  { id: 5, text: "Do you have a process to track pay data requests from employees and works councils?", area: "Request Management" },
-  { id: 6, text: "Are your managers trained to have pay conversations?", area: "Manager Capability" },
-  { id: 7, text: "Do you have a country-by-country view of how the Directive is being transposed?", area: "Multi-country Readiness" },
-  { id: 8, text: "Is there a clear internal owner for pay transparency readiness?", area: "Governance" }
+var questions = [
+  {
+    area: "Regulatory Mapping",
+    text: "Do you have a clear picture of pay transparency requirements in every market you operate in \u2014 including local transposition deadlines that may differ from the EU-wide 7 June 2026 date?",
+    source: "Korn Ferry: fewer than 10% of EU employers say they are well prepared. The Netherlands and Denmark have confirmed delays to January 2027; France is targeting September 2026.",
+    tips: {
+      0: "Start by mapping disclosure rules, reporting deadlines, and penalties for each jurisdiction you operate in. The EU deadline is 7 June 2026, but several member states \u2014 including the Netherlands, Denmark, and France \u2014 have confirmed later transposition dates. Estonia has openly stated it will miss the deadline. Don\u2019t assume one timeline fits all. Assign a single owner responsible for tracking regulatory changes across markets.",
+      1: "Good progress. Close the remaining gaps \u2014 especially around country-specific timelines. The European Commission has reaffirmed June 2026 as the expected date and infringement proceedings are likely for countries that miss it. Make sure you know which obligations apply from when in each market.",
+      2: "Strong foundation. Keep monitoring \u2014 member states continue to adjust timelines and interpretation. Build regulatory tracking into your annual governance cycle and brief leadership on country-level variations."
+    }
+  },
+  {
+    area: "Leadership & Governance",
+    text: "Do your senior leaders actively own the pay transparency agenda \u2014 with clear decision rights, escalation paths, and shared accountability across HR, Finance, and Legal?",
+    source: "Payscale 2026 CBPR: 68% of top-performing organisations have executives who view compensation as a strategic lever.",
+    tips: {
+      0: "This is a critical gap. Pay transparency is not an HR initiative \u2014 it\u2019s an organisation-wide commitment. Document who owns pay decisions, how exceptions are escalated, and ensure senior leaders are visibly sponsoring the agenda. Without leadership alignment, everything else stalls.",
+      1: "You have the structure forming \u2014 now test it. Does your governance hold when a senior leader wants to make an exception? Are decision rights genuinely shared, or does HR carry this alone? Formalise what you have into a governance charter.",
+      2: "Well structured. This leadership ownership will be your biggest advantage when transparency creates difficult conversations across the business."
+    }
+  },
+  {
+    area: "Compensation Philosophy",
+    text: "Do you have a documented compensation philosophy that genuinely guides pay decisions \u2014 not just a market positioning statement?",
+    source: "WorldatWork: 40% of organisations have no documented compensation philosophy.",
+    tips: {
+      0: "You\u2019re in the same position as nearly half of all organisations \u2014 but that\u2019s not where you want to be when transparency arrives. Write your philosophy in plain language: what do you reward \u2014 performance, skills, scope, tenure, scarcity? Then stress-test it: does it actually drive decisions, or is it aspirational?",
+      1: "Good \u2014 you have something documented. Now identify where practice diverges from philosophy. Those gaps become visible fast under transparency. If two managers in different functions would make different decisions using your philosophy, it needs sharpening.",
+      2: "Excellent. A clear, consistently applied philosophy is your strongest asset. It becomes the backbone of every pay conversation your managers will have."
+    }
+  },
+  {
+    area: "Job Architecture",
+    text: "Are your job families, levels, and evaluation criteria consistent, current, and objectively defensible across all markets?",
+    source: "Korn Ferry\u2019s Tom McMullen: \u2018Job levels are a primary driver of pay equity.\u2019",
+    tips: {
+      0: "This is foundational \u2014 without it, nothing else works. Audit every role. Are job families and levels consistent across markets? Are descriptions current and comparable? The Directive requires demonstrating equal pay for equal value based on objective, gender-neutral criteria \u2014 not local judgment calls. Start here.",
+      1: "Focus on the inconsistencies. Can you defend every levelling decision if an employee or regulator challenges it? Pay particular attention to roles that span functions or geographies \u2014 that\u2019s where inconsistency hides.",
+      2: "Solid. Well-built job architecture turns regulation into strategy. Make sure it stays current \u2014 roles evolve faster than most frameworks keep pace with."
+    }
+  },
+  {
+    area: "Pay Rules & Structures",
+    text: "Do you have published pay ranges for every grade, with documented rules for starting pay, promotions, and variable pay \u2014 and are exceptions recorded and explainable?",
+    source: "Syndio: 24% of organisations regularly deviate from their own stated pay policies.",
+    tips: {
+      0: "Publish ranges for every grade. Document the rules for placement within ranges, for movement through them, and for variable pay. Under transparency, every undocumented exception becomes a risk. If you\u2019re regularly deviating from your own stated policies, transparency will expose it.",
+      1: "Close the gaps \u2014 especially around exceptions. Review every current exception and decide: is this defensible, or does it need to be unwound before transparency makes it visible?",
+      2: "Well positioned. Review ranges regularly so they stay current with market movement, and maintain the discipline of documenting exceptions \u2014 even when it feels unnecessary."
+    }
+  },
+  {
+    area: "Data & Reporting",
+    text: "Can you produce a clean, repeatable pay equity report today \u2014 across regions, functions, and demographic categories \u2014 from a centralised data system?",
+    source: "Korn Ferry: only 14% of firms\u2019 pay strategies are well-known externally. Only 16% were prepared for disclosure requirements.",
+    tips: {
+      0: "Centralise your job and pay data in one connected system. Then run a trial report now \u2014 don\u2019t discover your data gaps when the reporting deadline arrives. The 2026 pay data you\u2019re collecting right now will form the basis of your first public report. Any gaps that exist when the Directive takes effect will be visible.",
+      1: "Test your reporting under realistic conditions. Can you reproduce it consistently? Is it dependent on one analyst\u2019s knowledge, or is the process documented and transferable? For employers with 150+ employees, the first report based on 2026 data is due by 7 June 2027. For employers with 250+, reporting is annual from that point. For 100\u2013149 employees, the first report isn\u2019t due until June 2031.",
+      2: "Strong capability. Make sure it\u2019s genuinely repeatable and not fragile. Build in quality checks and ensure multiple people can produce the report independently."
+    }
+  },
+  {
+    area: "Pay Equity Audit",
+    text: "Have you conducted a formal pay equity audit in the past 12 months \u2014 covering gender and other demographic dimensions \u2014 with documented root causes and remediation plans?",
+    source: "Affirmity: 9 in 10 \u2018advanced\u2019 organisations do annual audits. Aon: only 26% have done one in 18 months.",
+    tips: {
+      0: "This is a significant gap. Under the Directive, where a gender pay gap within any worker category exceeds 5% and cannot be justified by objective, gender-neutral criteria, employers must conduct a joint pay assessment with employee representatives and remedy the gap within six months. Commission an audit now. For every gap, document the root cause \u2014 hiring patterns, promotion rates, legacy decisions \u2014 and create a remediation plan with clear timelines.",
+      1: "Move from analysis to action. Having identified gaps is important, but regulators and employees will want to see evidence of remediation. The 5% threshold applies per worker category, not as an overall average \u2014 make sure your analysis is granular enough. Engage employee representatives early.",
+      2: "Proactive and well ahead. The key now is making this a regular cycle, not a one-off exercise. Engage employee groups early to test whether perceptions of fairness match your data."
+    }
+  },
+  {
+    area: "Recruitment Readiness",
+    text: "Are your recruitment processes updated to disclose salary ranges before first interviews and to stop asking candidates about their previous pay?",
+    source: "EU Directive: salary range disclosure and pay history bans apply to all employers from 7 June 2026. Some member states may enforce slightly later.",
+    tips: {
+      0: "This is your most immediate deadline. From 7 June 2026, employers must provide the initial pay level or salary range in the job advertisement or before the first interview. Asking candidates about previous pay is banned. These obligations apply to all employers regardless of size. Audit every job posting, recruiter briefing, and interview template. Update your ATS workflows and train every hiring manager. Note: if you operate in the Netherlands or Denmark, local enforcement may start from January 2027 \u2014 but the direction is set and preparing now avoids scrambling later.",
+      1: "Check the details. Are ranges disclosed consistently across all markets and channels \u2014 including agency postings? Have you removed pay history questions from every stage, including informal conversations? Test end-to-end with a mock candidate journey. Brief recruitment agencies on the new rules.",
+      2: "Well prepared. Make sure this extends to your recruitment agencies and RPO partners. Monitor compliance across all channels, not just your own direct hiring."
+    }
+  },
+  {
+    area: "Manager Readiness",
+    text: "Can your managers confidently explain pay ranges, individual positioning, and career progression \u2014 and handle difficult questions about pay differences?",
+    source: "Aon: only 9% of organisations are confident managers can discuss pay effectively. Payscale: how pay is explained matters more than the pay itself.",
+    tips: {
+      0: "This is urgent \u2014 and it\u2019s where most organisations are weakest. Managers are the face of pay transparency. Under the Directive, employees can request information on their individual pay level and the average pay for workers of the opposite gender doing the same work or work of equal value \u2014 and employers must respond within two months. If managers can\u2019t handle these conversations confidently, transparency creates confusion rather than trust. Train them before you publish ranges.",
+      1: "Pilot talking points and FAQs with a small group. Identify where confidence breaks down \u2014 is it about ranges, explaining differences, or connecting pay to progression? Embed review checkpoints with HR so managers aren\u2019t left alone with difficult conversations.",
+      2: "A real competitive advantage. Research shows that how pay decisions are explained has a stronger impact on engagement than the absolute pay level. Your managers can turn transparency into trust."
+    }
+  },
+  {
+    area: "Employee Understanding",
+    text: "Do your employees currently understand how pay decisions are made, what their salary range is, and what progression looks like \u2014 or would transparency come as a surprise?",
+    source: "WorldatWork: 80% of organisations say employees don\u2019t understand the comp philosophy. 40% don\u2019t share salary ranges with employees.",
+    tips: {
+      0: "This is the gap that defines whether transparency lands well or badly. If employees don\u2019t understand how pay works today, disclosing ranges won\u2019t build trust \u2014 it will trigger confusion and resentment. Develop a clear reward narrative in language employees actually use, not corporate policy language. Build an FAQ that covers the hardest questions honestly.",
+      1: "Good start \u2014 but test reality, not intention. Survey a cross-section: can they explain how their pay is determined? Do they know their range? If the answer is \u2018not really,\u2019 your communication isn\u2019t landing yet. Make the narrative concrete: what drives movement within a range, and what progression looks like.",
+      2: "This is where transparency creates real impact. When employees understand what you reward and how decisions are made, the conversation shifts from \u2018why am I paid this?\u2019 to \u2018what do I need to do to progress?\u2019 \u2014 which is where you want it."
+    }
+  }
 ];
 
-let current = 0;
-let answers = [];
-
-function showScreen(screenId) {
-  document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
-  document.getElementById(screenId).classList.add('active');
-}
+var current = 0;
+var answers = [];
+var labels = ["Not yet", "Working on it", "Yes, in place"];
 
 function startQuiz() {
-  showScreen('quizScreen');
+  document.getElementById('introScreen').classList.remove('active');
+  document.getElementById('questionScreen').classList.add('active');
   showQuestion();
 }
 
 function showQuestion() {
-  const area = document.getElementById('questionArea');
-  area.classList.remove('fade-in');
-  void area.offsetWidth;
-  area.classList.add('fade-in');
+  var q = questions[current];
+  document.getElementById('qCounter').textContent = 'Question ' + (current + 1) + ' of ' + questions.length;
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('qSource').textContent = q.source;
+  document.getElementById('progressFill').style.width = ((current) / questions.length * 100) + '%';
 
-  document.getElementById('qNumber').textContent = 'Question ' + String(current + 1).padStart(2, '0');
-  document.getElementById('qText').textContent = questions[current].text;
-  document.getElementById('progressCount').textContent = (current + 1) + ' / ' + questions.length;
-  document.getElementById('progressFill').style.width = (((current + 1) / questions.length) * 100) + '%';
+  var opts = document.getElementById('optionsContainer');
+  opts.innerHTML = '';
+
+  for (var i = 0; i < 3; i++) {
+    var div = document.createElement('div');
+    div.className = 'option';
+    div.setAttribute('data-val', i);
+    div.innerHTML =
+      '<div class="option-dot"></div>' +
+      '<div><div class="option-label">' + labels[i] + '</div></div>';
+    div.onclick = function() { selectOption(parseInt(this.getAttribute('data-val'))); };
+    opts.appendChild(div);
+  }
 }
 
-function answer(isYes) {
-  answers.push({ area: questions[current].area, answer: isYes, text: questions[current].text });
+function selectOption(val) {
+  answers.push(val);
   current++;
   if (current < questions.length) {
     showQuestion();
   } else {
-    showResults();
+    showGate();
   }
 }
 
-function getResultsModel() {
-  const yesCount = answers.filter(a => a.answer).length;
-  const pct = yesCount / questions.length;
+function showGate() {
+  document.getElementById('questionScreen').classList.remove('active');
+  document.getElementById('gateScreen').classList.add('active');
 
-  let color, title, desc, priority;
+  var total = answers.reduce(function(a, b) { return a + b; }, 0);
+  var pct = Math.round((total / (questions.length * 2)) * 100);
 
-  if (yesCount >= 7) {
-    color = 'var(--green)';
-    title = "You're in strong shape.";
-    desc = "Most of the foundations are there. Focus on fine-tuning, stress-testing your processes, and running a dry report before your internal deadline.";
-    priority = "Run a full dry report and test your governance, data flow, and manager guidance end to end. Fix any gaps that surface.";
-  } else if (yesCount >= 5) {
-    color = 'var(--red)';
-    title = "Getting there — but gaps remain.";
-    desc = "You've made progress, but the areas you flagged 'no' need focused attention. The good news: a structured plan can still move this forward quickly.";
-    priority = "Prioritise your 'no' areas next. Start with data readiness and job architecture — everything else builds on those.";
-  } else if (yesCount >= 3) {
-    color = 'var(--amber)';
-    title = "Behind the curve.";
-    desc = "There is real work to do. These gaps tend to compound one another, so it helps to sequence them into a practical plan.";
-    priority = "Start with an honest gap analysis, then fix the foundations — job architecture, data, and documentation — before manager rollout.";
+  document.getElementById('scoreNumber').innerHTML = pct + '<span>%</span>';
+
+  var circumference = 2 * Math.PI * 68;
+  var offset = circumference - (pct / 100) * circumference;
+  var ring = document.getElementById('scoreRing');
+
+  var color = pct < 50 ? 'var(--red)' : pct < 75 ? 'var(--amber)' : 'var(--green)';
+  ring.style.stroke = color;
+
+  setTimeout(function() { ring.style.strokeDashoffset = offset; }, 200);
+
+  if (pct < 50) {
+    document.getElementById('gateTitle').textContent = "You have significant gaps to close.";
+  } else if (pct < 75) {
+    document.getElementById('gateTitle').textContent = "You\u2019re making progress \u2014 but gaps remain.";
   } else {
-    color = 'var(--coral)';
-    title = "You need to start now.";
-    desc = "Most of the building blocks are not yet in place. That is fixable, but it requires ownership, structure, and prioritisation.";
-    priority = "Map your job architecture, assess HRIS and pay-data capability, assign a clear owner, and build a staged roadmap.";
+    document.getElementById('gateTitle').textContent = "You\u2019re well ahead of most organisations.";
   }
-
-  return { yesCount, pct, color, title, desc, priority };
 }
 
-function buildSummarySections() {
-  const strengths = answers.filter(a => a.answer).map(a => a.area);
-  const gaps = answers.filter(a => !a.answer).map(a => a.area);
+function submitGate() {
+  var name = document.getElementById('userName').value.trim();
+  var email = document.getElementById('userEmail').value.trim();
+  var size = document.getElementById('companySize').value;
 
-  const strengthsHtml = strengths.length
-    ? '<p><strong>Areas already in better shape:</strong> ' + escapeHtml(strengths.join(', ')) + '.</p>'
-    : '<p><strong>Areas already in better shape:</strong> None confirmed yet.</p>';
-
-  const gapsHtml = gaps.length
-    ? '<p><strong>Priority gaps to address:</strong> ' + escapeHtml(gaps.join(', ')) + '.</p>'
-    : '<p><strong>Priority gaps to address:</strong> No major gaps flagged in this quick check.</p>';
-
-  let recommendation = '';
-  if (gaps.includes('Job Architecture') || gaps.includes('Data Readiness')) {
-    recommendation = 'Start with job architecture and pay-data readiness. These are the foundations for defensible reporting, pay gap analysis, and employee communications.';
-  } else if (gaps.includes('Manager Capability') || gaps.includes('Governance')) {
-    recommendation = 'Your technical foundations appear stronger than your operating model. Focus next on ownership, escalation routes, and manager readiness for pay conversations.';
-  } else if (gaps.length === 0) {
-    recommendation = 'Your answers suggest a relatively mature starting point. Move from design into testing: dry-run reporting, challenge assumptions, and tighten documentation.';
-  } else {
-    recommendation = 'Build a sequenced roadmap rather than treating every gap at once. Prioritise the items that affect compliance evidence, reporting quality, and decision consistency.';
+  if (!name || !email || !size) {
+    alert('Please fill in all fields.');
+    return;
   }
 
-  return (
-    '<div class="result-breakdown">' +
-      '<h3>Your summary</h3>' +
-      strengthsHtml +
-      gapsHtml +
-      '<p><strong>Recommended focus:</strong> ' + escapeHtml(recommendation) + '</p>' +
-    '</div>'
-  );
+  if (email.indexOf('@') < 1 || email.indexOf('.') < 3) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  // ── LEAD CAPTURE via Formspree ──
+  var score = Math.round((answers.reduce(function(a,b){return a+b;}, 0) / (questions.length * 2)) * 100);
+  var band = score < 50 ? 'Early stage' : score < 75 ? 'Building momentum' : 'Advanced';
+  var breakdown = answers.map(function(a, i) { return questions[i].area + ': ' + labels[a]; }).join('; ');
+
+  fetch('https://formspree.io/f/xgoqwrel', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      company_size: size,
+      score: score + '% (' + band + ')',
+      answers: breakdown
+    })
+  }).catch(function(err) {
+    console.error('Form submission error:', err);
+  });
+
+  showResults();
 }
 
 function showResults() {
-  showScreen('resultScreen');
+  document.getElementById('gateScreen').classList.remove('active');
+  document.getElementById('resultsScreen').classList.add('active');
 
-  const result = getResultsModel();
-  const circumference = 2 * Math.PI * 68;
-  const offset = circumference - (result.pct * circumference);
+  var total = answers.reduce(function(a, b) { return a + b; }, 0);
+  var pct = Math.round((total / (questions.length * 2)) * 100);
 
-  let breakdownHTML = '';
-  for (let i = 0; i < answers.length; i++) {
-    const a = answers[i];
-    breakdownHTML += '<div class="breakdown-item">' +
-      '<div class="breakdown-icon ' + (a.answer ? 'yes' : 'no') + '">' + (a.answer ? '&#10003;' : '&#10007;') + '</div>' +
-      '<div><strong>' + escapeHtml(a.area) + '</strong> — ' + (a.answer ? 'In place' : 'Needs attention') + '</div>' +
+  var band = pct < 50 ? 'Early stage' : pct < 75 ? 'Building momentum' : 'Advanced';
+  document.getElementById('resultsSubtitle').textContent = 'Overall readiness: ' + pct + '% \u00B7 ' + band;
+
+  var body = document.getElementById('resultsBody');
+  body.innerHTML = '';
+
+  var indexed = answers.map(function(a, i) { return { idx: i, val: a }; });
+  indexed.sort(function(a, b) { return a.val - b.val; });
+
+  for (var j = 0; j < indexed.length; j++) {
+    var i = indexed[j].idx;
+    var val = answers[i];
+    var q = questions[i];
+
+    var status = val === 0 ? 'red' : val === 1 ? 'amber' : 'green';
+    var icon = val === 0 ? '\u2715' : val === 1 ? '\u25D0' : '\u2713';
+    var tag = val === 0 ? 'Needs Attention' : val === 1 ? 'In Progress' : 'On Track';
+
+    var card = document.createElement('div');
+    card.className = 'result-card';
+    card.innerHTML =
+      '<div class="result-icon ' + status + '">' + icon + '</div>' +
+      '<div class="result-content">' +
+        '<span class="result-tag ' + status + '">' + tag + '</span>' +
+        '<h3>' + q.area + '</h3>' +
+        '<p>' + q.tips[val] + '</p>' +
       '</div>';
+    body.appendChild(card);
   }
 
-  document.getElementById('resultsContent').innerHTML =
-    '<div class="score-ring">' +
-      '<svg viewBox="0 0 160 160">' +
-        '<circle class="bg" cx="80" cy="80" r="68" />' +
-        '<circle class="fill" cx="80" cy="80" r="68" stroke="' + result.color + '" stroke-dasharray="' + circumference + '" stroke-dashoffset="' + circumference + '" id="scoreCircle" />' +
-      '</svg>' +
-      '<div class="score-center">' +
-        '<div class="score-num">' + result.yesCount + '</div>' +
-        '<div class="score-of">out of ' + questions.length + '</div>' +
+  var cta = document.createElement('div');
+  cta.className = 'cta-card';
+  cta.innerHTML =
+    '<h3>Need help closing the gaps?</h3>' +
+    '<p>I work with organisations to build pay transparency as a strategic capability \u2014 from job architecture and pay equity audits to manager training and reward narratives.</p>' +
+    '<div class="cta-contact">' +
+      '<div class="cta-name">Dimashi Sigera, MCIPD, CPHR</div>' +
+      '<div class="cta-role">Reward Specialist \u2014 EU Pay Transparency | Job Architecture & Reward Transformation | EMEA, APAC & North America</div>' +
+      '<div class="cta-details">' +
+        '<span>\uD83D\uDCCD Leiden, Netherlands</span>' +
+        '<span>\uD83D\uDCDE <a href="tel:+31657794956">+31 6 577 94956</a></span>' +
+        '<span>\u2709\uFE0F <a href="mailto:dimashi.sigera@scaleableworks.com?subject=Pay%20Transparency%20Readiness%20%E2%80%93%20Let%E2%80%99s%20Talk">dimashi.sigera@scaleableworks.com</a></span>' +
       '</div>' +
-    '</div>' +
-
-    '<div class="red-line"></div>' +
-    '<div class="result-title">' + result.title + '</div>' +
-    '<div class="result-desc">' + result.desc + '</div>' +
-
-    buildSummarySections() +
-
-    '<div class="result-breakdown">' +
-      '<h3>Your answers</h3>' +
-      breakdownHTML +
-    '</div>' +
-
-    '<div class="priority-box">' +
-      '<h3>What to do next</h3>' +
-      '<p>' + result.priority + '</p>' +
-    '</div>' +
-
-    '<div class="privacy-box">' +
-      '<h3>Privacy notice</h3>' +
-      '<p>This anonymous version stores answers only in your browser session for the duration of this visit. It does not ask for personal details and no responses are submitted anywhere by default.</p>' +
-    '</div>' +
-
-    '<div class="disclaimer-box">' +
-      '<h3>Important disclaimer</h3>' +
-      '<p>This tool is provided for general informational purposes only. It is a simplified readiness check and does not constitute legal advice, compliance advice, or a formal assessment of obligations under the EU Pay Transparency Directive or any national implementing law. It is provided without warranties, and any action taken should be reviewed against your organisation\'s own facts, local laws, and professional advice.</p>' +
-    '</div>' +
-
-    '<div class="cta-section">' +
-      '<p>This anonymous diagnostic provides a high-level indication of readiness based on the answers selected.</p>' +
-      '<div class="cta-buttons">' +
-        '<button class="btn-download" onclick="downloadSummary()">Download my readiness summary</button>' +
-        '<button class="btn-restart" onclick="restart()">Retake the check</button>' +
-      '</div>' +
-    '</div>' +
-
-    '<div class="footer-note">EU Pay Transparency Readiness Check</div>';
-
-  setTimeout(function() {
-    const circle = document.getElementById('scoreCircle');
-    if (circle) circle.style.strokeDashoffset = offset;
-  }, 100);
+      '<a href="https://www.linkedin.com/in/dimashischeenstra/" target="_blank" class="btn cta-linkedin">Connect on LinkedIn \u2192</a>' +
+    '</div>';
+  body.appendChild(cta);
 }
-
-function restart() {
-  current = 0;
-  answers = [];
-  showScreen('introScreen');
-}
-
-function downloadSummary() {
-  const result = getResultsModel();
-  const lines = [
-    'EU Pay Transparency Readiness Summary',
-    '-----------------------------------',
-    'Anonymous summary',
-    '',
-    'Score: ' + result.yesCount + ' out of ' + questions.length,
-    'Headline: ' + result.title,
-    'Summary: ' + result.desc,
-    'Priority: ' + result.priority,
-    '',
-    'Answers:'
-  ];
-
-  answers.forEach((a, index) => {
-    lines.push((index + 1) + '. ' + a.text + ' — ' + (a.answer ? 'Yes' : 'No'));
-  });
-
-  lines.push('');
-  lines.push('Disclaimer: This screening tool provides general information only and is not legal or compliance advice.');
-
-  const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'eu-pay-transparency-readiness-summary.txt';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
-}
-
-function escapeHtml(value) {
-  return String(value || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
-
 </script>
 </body>
 </html>
